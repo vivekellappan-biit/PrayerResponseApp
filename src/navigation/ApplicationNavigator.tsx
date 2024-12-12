@@ -1,20 +1,16 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {
-  HomeScreen,
-  ListItem,
-  ResponseScreen,
-  SplashScreen,
-} from '../screens/index';
+import {HomeScreen, ResponseScreen, SplashScreen} from '../screens/index';
 import {State} from 'react-native-gesture-handler';
 import {COLORS} from '../constants/colors';
+import {PrayerRequest} from '../models/PrayerRequest';
 
 export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   Response: {
-    item: ListItem;
+    item: PrayerRequest;
   };
 };
 
@@ -46,8 +42,11 @@ const ApplicationNavigator: React.FC = () => {
           component={HomeScreen}
           options={{
             headerShown: true,
-            title: 'Prayer Requests',
+            title: 'Arulvakku'.toUpperCase(),
             headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
         <Stack.Screen
@@ -55,8 +54,11 @@ const ApplicationNavigator: React.FC = () => {
           component={ResponseScreen}
           options={{
             headerShown: true,
-            title: 'Prayer Request',
-            headerTitleAlign: 'center',
+            title: 'Prayer Response'.toUpperCase(),
+            headerTitleAlign: 'left',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
       </Stack.Navigator>

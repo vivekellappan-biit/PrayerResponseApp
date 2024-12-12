@@ -83,3 +83,4 @@ debug.log
 /android/app/build/
 /ios/build/
 src/constants/api_endpoints.tsx
+src/types/env.d.tsx

@@ -3,5 +3,8 @@ export interface PrayerRequest {
   name: string;
   from: string;
   message: string;
-  created_at: string;
+  created_at: String;
+  response: string;
+  updated_at: string;
+  device: string;
 }
