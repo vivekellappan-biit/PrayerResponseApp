@@ -127,7 +127,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
         onPress={() => navigation.navigate('Response', {item})}>
         <View style={styles.itemContent}>
           <View style={styles.headerRow}>
-            <Text style={styles.messageText}>{item.message.trim()}</Text>
+            <Text style={styles.messageText}>{item.message?.trim()}</Text>
             <View
               style={[
                 styles.statusBadge,
@@ -148,7 +148,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           </View>
           <View style={styles.detailsContainer}>
             <Text style={styles.nameText}>
-              {item.name.trim()} From {item.from.trim()}
+              {item.name?.trim()} From {item.from?.trim()}
             </Text>
             <Text style={styles.dateText}>{timeAgo(item.updated_at)}</Text>
           </View>
