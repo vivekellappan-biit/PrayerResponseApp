@@ -71,8 +71,8 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
       const {data: items, error} = await supabase
         .from('tbl_prayer_request')
         .select('*')
-        .order('response', {ascending: false}) // First sort by response (null first)
-        .order('created_at', {ascending: false}); // Then by creation date
+        .order('response', {ascending: false})
+        .order('created_at', {ascending: false});
 
       if (error) {
         setError(error);
