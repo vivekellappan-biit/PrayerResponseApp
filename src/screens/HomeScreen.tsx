@@ -37,6 +37,33 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
     pending: 0,
   });
 
+  // const fetchData = async () => {
+  //   try {
+  //     setLoading(true);
+  //     setError(null);
+  //     const {data: items, error} = await supabase
+  //       .from('tbl_prayer_request')
+  //       .select('*')
+  //       .order('created_at', {ascending: false});
+  //     if (error) {
+  //       setError(error);
+  //       throw error;
+  //     }
+  //     setData(items);
+
+  //     if (items) {
+  //       setStats({
+  //         total: items.length,
+  //         answered: items.filter(item => item.response).length,
+  //         pending: items.filter(item => !item.response).length,
+  //       });
+  //     }
+  //   } catch (error) {
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -44,7 +71,9 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
       const {data: items, error} = await supabase
         .from('tbl_prayer_request')
         .select('*')
-        .order('created_at', {ascending: false});
+        .order('response', {ascending: false}) // First sort by response (null first)
+        .order('created_at', {ascending: false}); // Then by creation date
+
       if (error) {
         setError(error);
         throw error;

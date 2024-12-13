@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -28,6 +28,12 @@ const ResponseScreen: React.FC<Props> = ({route, navigation}) => {
   const {item} = route.params;
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (item.response) {
+      setResponse(item.response.trim());
+    }
+  }, []);
 
   const handleSend = async () => {
     // Alert.alert(ALERT_TITLE, ALERT_MESSAGE, [
@@ -129,7 +135,9 @@ const ResponseScreen: React.FC<Props> = ({route, navigation}) => {
                   color="#FFFFFF"
                   style={styles.sendIcon}
                 />
-                <Text style={styles.sendButtonText}>Send Response</Text>
+                <Text style={styles.sendButtonText}>
+                  {item.response ? 'Update Response' : 'Send Response'}
+                </Text>
               </>
             )}
           </TouchableOpacity>
